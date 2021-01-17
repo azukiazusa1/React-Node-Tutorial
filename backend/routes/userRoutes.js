@@ -12,7 +12,7 @@ router.post('/signin', async(req, res) => {
   if (signinUser) {
     res.json({
       ...signinUser,
-      token: getToken(user)
+      token: getToken(signinUser)
     })
   } else {
     res.status(401).send({
