@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import config from './config'
 import mongoose from 'mongoose'
 import userRoute from './routes/userRoutes'
+import bodyParser from 'body-parser'
 
 dotenv.config()
 
@@ -14,7 +15,7 @@ mongoose.connect(mongodbUrl, {
 }).catch(e => console.log(e))
 
 const app = express()
-
+app.use(bodyParser)
 app.use('/api/users', userRoute)
 app.get('/api/products/:id', (req, res) => {
   const productId = req.params.id
